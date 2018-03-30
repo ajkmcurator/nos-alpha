@@ -24,7 +24,7 @@ io.on('connection', function(socket){
       delete users[socket.id];
     }
   });
-  /**socket.on('switch', function(data){
+  socket.on('switch', function(data){
    if (data[1] !== '') {
       console.log('user switched : '+data[1]+' to room '+data[0]);
       socket.join(data[0]);
@@ -32,12 +32,12 @@ io.on('connection', function(socket){
       users[socket.id] = [data[1], data[0]];
     }
     //console.log(users);
-  });**/
+  });
 
   socket.on('message', function(data) {
     var msg = data['data'][1];
     io.to(data['room']).emit('message', data['data']);
-    /**if (msg.startsWith('?')) {
+    if (msg.startsWith('?')) {
       if (msg == '?ping') {
         for (usr in users) {
           io.to(data['room']).emit('message', ['_System', users[usr]]);
@@ -52,7 +52,7 @@ io.on('connection', function(socket){
         io.to(data['room']).emit('message', ['_System', cmdHelp]);
       } else {
 
-      }**/
+      }
       //console.log('data');
     }
   });
