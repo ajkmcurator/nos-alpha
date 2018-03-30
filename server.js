@@ -3,7 +3,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var url = require('url'); 
-var cmdHelp = "?ping : see online users<br>?ping room : see users in your current room"
+//var cmdHelp = "?ping : see online users<br>?ping room : see users in your current room"
 var users = {};
 if (process.argv[2] == undefined) {
   var port = 80;
@@ -20,19 +20,19 @@ io.on('connection', function(socket){
   //console.log('a user connected');
   socket.on('disconnect', function(){
     if (users[socket.id] != undefined) {
-      io.to(users[socket.id][1]).emit('message', ['_System', 'User ['+users[socket.id][0]+'] has left']);
+      //io.to(users[socket.id][1]).emit('message', ['_System', 'User ['+users[socket.id][0]+'] has left']);
       delete users[socket.id];
     }
   });
-  socket.on('switch', function(data){
-   /**if (data[1] !== '') {
+  /**socket.on('switch', function(data){
+   if (data[1] !== '') {
       console.log('user switched : '+data[1]+' to room '+data[0]);
       socket.join(data[0]);
       io.to(data[0]).emit('message', ['_System', 'User ['+data[1]+'] has joined']);
       users[socket.id] = [data[1], data[0]];
-    }**/
+    }
     //console.log(users);
-  });
+  });**/
 
   socket.on('message', function(data) {
     var msg = data['data'][1];
