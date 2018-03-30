@@ -6,7 +6,7 @@ var url = require('url');
 //var cmdHelp = "?ping : see online users<br>?ping room : see users in your current room"
 var users = {};
 if (process.argv[2] == undefined) {
-  var port = 80;
+  var port = 8080;
 } else {
   var port = process.argv[2]; // Use node server.js [port]
 }
