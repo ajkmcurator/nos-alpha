@@ -198,7 +198,7 @@ function login() {
 
         if (uName == '_System') {
 
-            uName = 'I_tried_to_hack_the_system._Sorry.'
+            uName = 'Please ban me from the chat.'
 
         }
 
